@@ -1,0 +1,52 @@
+<%= form_with(model: speed_record) do |form| %>
+  <% if speed_record.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(speed_record.errors.count, "error") %> prohibited this speed_record from being saved:</h2>
+
+      <ul>
+        <% speed_record.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :vehicle_id, style: "display: block" %>
+    <%= form.text_field :vehicle_id %>
+  </div>
+
+  <div>
+    <%= form.label :speed, style: "display: block" %>
+    <%= form.text_field :speed %>
+  </div>
+
+  <div>
+    <%= form.label :location, style: "display: block" %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div>
+    <%= form.label :recorded_at, style: "display: block" %>
+    <%= form.datetime_field :recorded_at %>
+  </div>
+
+  <div>
+    <%= form.label :direction, style: "display: block" %>
+    <%= form.text_field :direction %>
+  </div>
+
+  <div>
+    <%= form.label :weather_conditions, style: "display: block" %>
+    <%= form.text_field :weather_conditions %>
+  </div>
+
+  <div>
+    <%= form.label :notes, style: "display: block" %>
+    <%= form.textarea :notes %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

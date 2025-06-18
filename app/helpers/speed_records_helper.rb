@@ -1,0 +1,2 @@
+module SpeedRecordsHelper
+end

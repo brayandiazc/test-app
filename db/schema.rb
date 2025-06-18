@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_18_022300) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_18_023140) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "speed_records", force: :cascade do |t|
+    t.bigint "vehicle_id", null: false
+    t.float "speed"
+    t.string "location"
+    t.datetime "recorded_at"
+    t.string "direction"
+    t.string "weather_conditions"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vehicle_id"], name: "index_speed_records_on_vehicle_id"
+  end
 
   create_table "vehicles", force: :cascade do |t|
     t.string "plate_number"
@@ -23,4 +36,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_18_022300) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "speed_records", "vehicles"
 end

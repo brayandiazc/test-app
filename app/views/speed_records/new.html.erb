@@ -1,0 +1,11 @@
+<% content_for :title, "New speed record" %>
+
+<h1>New speed record</h1>
+
+<%= render "form", speed_record: @speed_record %>
+
+<br>
+
+<div>
+  <%= link_to "Back to speed records", speed_records_path %>
+</div>
