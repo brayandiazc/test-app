@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="snes-container">
+  <h1 class="text-center">Detalles del Vehículo</h1>
+
+  <div class="snes-container">
+    <blockquote class="snes-blockquote has-plumber-bg">
+      <p><strong>Placa:</strong> <%= @vehicle.plate_number %></p>
+      <p><strong>Tipo:</strong> <%= @vehicle.vehicle_type %></p>
+      <p><strong>Marca:</strong> <%= @vehicle.brand %></p>
+      <p><strong>Modelo:</strong> <%= @vehicle.model %></p>
+      <p><strong>Año:</strong> <%= @vehicle.year %></p>
+    </blockquote>
+  </div>
+
+  <div class="snes-container">
+    <%= link_to "Editar", edit_vehicle_path(@vehicle), class: "snes-button has-plumber-color" %>
+    <%= link_to "Volver", vehicles_path, class: "snes-button has-ocean-color" %>
+  </div>
+</div>
+
+<%= button_to "Destroy this vehicle", @vehicle, method: :delete %>

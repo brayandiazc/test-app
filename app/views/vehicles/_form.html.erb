@@ -1,0 +1,47 @@
+<%= form_with(model: vehicle, class: "snes-container") do |form| %>
+  <% if vehicle.errors.any? %>
+    <div class="snes-container has-error-bg">
+      <h2><%= pluralize(vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h2>
+      <ul class="snes-list is-error-list-color">
+        <% vehicle.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="snes-container">
+    <div class="field">
+      <%= form.label :plate_number, class: "snes-label" %>
+      <%= form.text_field :plate_number, class: "snes-input" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :vehicle_type, class: "snes-label" %>
+      <%= form.select :vehicle_type, 
+          ['Carro', 'Moto', 'Camión', 'Bus', 'Otro'], 
+          { include_blank: 'Seleccione un tipo' }, 
+          { class: "snes-select" } %>
+    </div>
+
+    <div class="field">
+      <%= form.label :brand, class: "snes-label" %>
+      <%= form.text_field :brand, class: "snes-input" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :model, class: "snes-label" %>
+      <%= form.text_field :model, class: "snes-input" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :year, class: "snes-label" %>
+      <%= form.number_field :year, class: "snes-input" %>
+    </div>
+  </div>
+
+  <div class="snes-container">
+    <%= form.submit class: "snes-button has-plumber-color" %>
+    <%= link_to "Cancelar", vehicles_path, class: "snes-button has-ocean-color" %>
+  </div>
+<% end %>
