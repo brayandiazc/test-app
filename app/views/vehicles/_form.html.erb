@@ -1,9 +1,8 @@
-<%= form_with(model: vehicle) do |form| %>
+<%= form_with(model: vehicle, class: "snes-container") do |form| %>
   <% if vehicle.errors.any? %>
-    <div style="color: red">
+    <div class="snes-container has-error-bg">
       <h2><%= pluralize(vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h2>
-
-      <ul>
+      <ul class="snes-list is-error-list-color">
         <% vehicle.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,32 +10,38 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :plate_number, style: "display: block" %>
-    <%= form.text_field :plate_number %>
+  <div class="snes-container">
+    <div class="field">
+      <%= form.label :plate_number, class: "snes-label" %>
+      <%= form.text_field :plate_number, class: "snes-input" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :vehicle_type, class: "snes-label" %>
+      <%= form.select :vehicle_type, 
+          ['Carro', 'Moto', 'Camión', 'Bus', 'Otro'], 
+          { include_blank: 'Seleccione un tipo' }, 
+          { class: "snes-select" } %>
+    </div>
+
+    <div class="field">
+      <%= form.label :brand, class: "snes-label" %>
+      <%= form.text_field :brand, class: "snes-input" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :model, class: "snes-label" %>
+      <%= form.text_field :model, class: "snes-input" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :year, class: "snes-label" %>
+      <%= form.number_field :year, class: "snes-input" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :vehicle_type, style: "display: block" %>
-    <%= form.text_field :vehicle_type %>
-  </div>
-
-  <div>
-    <%= form.label :brand, style: "display: block" %>
-    <%= form.text_field :brand %>
-  </div>
-
-  <div>
-    <%= form.label :model, style: "display: block" %>
-    <%= form.text_field :model %>
-  </div>
-
-  <div>
-    <%= form.label :year, style: "display: block" %>
-    <%= form.number_field :year %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="snes-container">
+    <%= form.submit class: "snes-button has-plumber-color" %>
+    <%= link_to "Cancelar", vehicles_path, class: "snes-button has-ocean-color" %>
   </div>
 <% end %>

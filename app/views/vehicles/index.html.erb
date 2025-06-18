@@ -2,15 +2,43 @@
 
 <% content_for :title, "Vehicles" %>
 
-<h1>Vehicles</h1>
+<div class="snes-container">
+  <h1 class="text-center">Vehículos Registrados</h1>
 
-<div id="vehicles">
-  <% @vehicles.each do |vehicle| %>
-    <%= render vehicle %>
-    <p>
-      <%= link_to "Show this vehicle", vehicle %>
-    </p>
-  <% end %>
+  <div class="snes-container">
+    <%= link_to "Nuevo Vehículo", new_vehicle_path, class: "snes-button has-plumber-color" %>
+  </div>
+
+  <div class="snes-container">
+    <table class="snes-table">
+      <thead>
+        <tr>
+          <th>Placa</th>
+          <th>Tipo</th>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Año</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @vehicles.each do |vehicle| %>
+          <tr>
+            <td><%= vehicle.plate_number %></td>
+            <td><%= vehicle.vehicle_type %></td>
+            <td><%= vehicle.brand %></td>
+            <td><%= vehicle.model %></td>
+            <td><%= vehicle.year %></td>
+            <td>
+              <%= link_to "Ver", vehicle, class: "snes-button is-small has-ocean-color" %>
+              <%= link_to "Editar", edit_vehicle_path(vehicle), class: "snes-button is-small has-plumber-color" %>
+              <%= button_to "Eliminar", vehicle, method: :delete, class: "snes-button is-small has-error-color", 
+                  data: { confirm: "¿Estás seguro de eliminar este vehículo?" } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<%= link_to "New vehicle", new_vehicle_path %>
