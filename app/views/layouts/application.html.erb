@@ -16,6 +16,7 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="stylesheet" href="https://snes-css.sadlative.com/snes.css">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
@@ -23,6 +24,19 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="snes-container">
+      <nav class="snes-nav">
+        <%= link_to "Inicio", root_path, class: "snes-link" %>
+        <%= link_to "Preguntas Frecuentes", faq_path, class: "snes-link" %>
+      </nav>
+    </header>
+
+    <main class="snes-container">
+      <%= yield %>
+    </main>
+
+    <footer class="snes-container">
+      <p class="text-center">© <%= Time.current.year %> Sistema de Registro de Velocidades</p>
+    </footer>
   </body>
 </html>
