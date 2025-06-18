@@ -8,6 +8,15 @@
   </div>
 
   <div class="snes-container">
+    <h2>Acceso Rápido</h2>
+    <div class="snes-container">
+      <%= link_to "Ver Vehículos", vehicles_path, class: "snes-button has-plumber-color" %>
+      <%= link_to "Ver Registros de Velocidad", speed_records_path, class: "snes-button has-ocean-color" %>
+      <%= link_to "Nuevo Registro de Velocidad", new_speed_record_path, class: "snes-button has-phantom-color" %>
+    </div>
+  </div>
+
+  <div class="snes-container">
     <h2>Características principales</h2>
     <ul class="snes-list is-plumber-list-color">
       <li>Registro de velocidades en tiempo real</li>
@@ -18,7 +27,13 @@
   </div>
 
   <div class="snes-container">
-    <button class="snes-button has-plumber-color">Comenzar</button>
-    <button class="snes-button has-ocean-color">Ver Demo</button>
+    <h2>Estadísticas Rápidas</h2>
+    <div class="snes-container">
+      <blockquote class="snes-blockquote has-ocean-bg">
+        <p>Total de Vehículos: <%= Vehicle.count %></p>
+        <p>Total de Registros: <%= SpeedRecord.count %></p>
+        <p>Velocidad Promedio: <%= SpeedRecord.average(:speed)&.round(2) || 0 %> km/h</p>
+      </blockquote>
+    </div>
   </div>
 </div>

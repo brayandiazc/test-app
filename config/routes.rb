@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :speed_records
   resources :vehicles
   root "static_pages#home"
   get "faq", to: "static_pages#faq"

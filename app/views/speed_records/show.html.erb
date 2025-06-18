@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @speed_record %>
+
+<div>
+  <%= link_to "Edit this speed record", edit_speed_record_path(@speed_record) %> |
+  <%= link_to "Back to speed records", speed_records_path %>
+
+  <%= button_to "Destroy this speed record", @speed_record, method: :delete %>
+</div>

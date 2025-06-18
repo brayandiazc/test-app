@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Test App" %></title>
+    <title><%= content_for(:title) || "Sistema de Registro de Velocidades" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -26,12 +26,30 @@
   <body>
     <header class="snes-container">
       <nav class="snes-nav">
-        <%= link_to "Inicio", root_path, class: "snes-link" %>
-        <%= link_to "Preguntas Frecuentes", faq_path, class: "snes-link" %>
+        <div class="snes-nav-left">
+          <%= link_to "Inicio", root_path, class: "snes-link" %>
+          <%= link_to "Vehículos", vehicles_path, class: "snes-link" %>
+          <%= link_to "Registros de Velocidad", speed_records_path, class: "snes-link" %>
+        </div>
+        <div class="snes-nav-right">
+          <%= link_to "Preguntas Frecuentes", faq_path, class: "snes-link" %>
+        </div>
       </nav>
     </header>
 
     <main class="snes-container">
+      <% if notice %>
+        <div class="snes-container has-success-bg">
+          <p><%= notice %></p>
+        </div>
+      <% end %>
+      
+      <% if alert %>
+        <div class="snes-container has-error-bg">
+          <p><%= alert %></p>
+        </div>
+      <% end %>
+
       <%= yield %>
     </main>
 
